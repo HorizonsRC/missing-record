@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore", message=".*Empty hilltop response:.*")
 with open("script_config.yaml") as file:
     config = yaml.safe_load(file)
 
-sites = site_list_merge.get_sites()
+sites = site_list_merge.get_sites(site_list_merge.connect_to_db())
 # sites = pd.DataFrame(
 #     {
 #         "SiteName": ["Lake William", "Manawatu at Teachers College"],
@@ -25,9 +25,9 @@ sites = site_list_merge.get_sites()
 #     }
 # )
 
-with open("Active_Measurements_buckets.csv", newline="") as f:
+with open("config_files/Active_Measurements.csv", newline="") as f:
     reader = csv.reader(f)
-    measurements = [(row[0], row[1]) for row in reader]
+    measurements = [(row[0], row[1]) for row in reader if len(row) > 0]
 
 region_stats_dict = {
     "Northern": [],
