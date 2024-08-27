@@ -18,12 +18,6 @@ with open("script_config.yaml") as file:
     config = yaml.safe_load(file)
 
 sites = site_list_merge.get_sites(site_list_merge.connect_to_db())
-# sites = pd.DataFrame(
-#     {
-#         "SiteName": ["Lake William", "Manawatu at Teachers College"],
-#         "RegionName": ["LAKES AND WQ", "Central"],
-#     }
-# )
 
 with open("config_files/Active_Measurements.csv", newline="") as f:
     reader = csv.reader(f)
@@ -139,7 +133,7 @@ write_dict_to_file("output_dump/output.csv", bucket_stats_dict, False)
 write_dict_to_file("output_dump/output_percent.csv", bucket_stats_dict, True)
 for region in regions_dict:
     write_dict_to_file(
-        f"output_dump/output_{region}.csv", region_stats_dict[region], True
+        f"output_dump/output_{region}.csv", region_stats_dict[region], False
     )
 
 # Annex splitting
