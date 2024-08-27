@@ -113,7 +113,7 @@ for site in all_stats_dict:
 def write_dict_to_file(output_file, input_dict, output_as_percent):
     """Writes a dict into csv."""
     diff = pd.to_datetime(config["end"]) - pd.to_datetime(config["start"])
-    with open(output_file, "w", newline="") as output:
+    with open(output_file, "w", newline="", encoding='utf-8') as output:
         wr = csv.writer(output)
         wr.writerow(["Sites"] + measurement_buckets)
         for site in input_dict:
