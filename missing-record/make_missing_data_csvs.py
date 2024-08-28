@@ -1,16 +1,17 @@
 """Missing record script."""
+
 import csv
 import time
 import warnings
 
 import numpy as np
 import pandas as pd
-import site_list_merge
 import yaml
-from pandas.tseries.frequencies import to_offset
-
 from hydrobot.data_acquisition import get_data
 from hydrobot.utils import infer_frequency
+from pandas.tseries.frequencies import to_offset
+
+import site_list_merge
 
 warnings.filterwarnings("ignore", message=".*Empty hilltop response:.*")
 
@@ -27,13 +28,13 @@ region_stats_dict = {
     "Northern": [],
     "Eastern": [],
     "Central": [],
-    "Special_P": [],
+    "Special": [],
 }
 regions_dict = {
     "Northern": ["NORTHERN"],
     "Eastern": ["EASTERN"],
     "Central": ["CENTRAL"],
-    "Special_P": ["LAKES AND WQ", "Arawhata Piezometers"],
+    "Special": ["LAKES AND WQ", "Arawhata Piezometers"],
 }
 annex_3_sites = {}
 for _, site in sites.iterrows():
@@ -110,12 +111,12 @@ for site in all_stats_dict:
     bucket_stats_dict[site] = [site_bucket_dict[m] for m in measurement_buckets]
 
 
-def write_dict_to_file(output_file, input_dict, output_as_percent):
+def write_dict_to_file(output_file, input_dict, title_list, output_as_percent):
     """Writes a dict into csv."""
     diff = pd.to_datetime(config["end"]) - pd.to_datetime(config["start"])
-    with open(output_file, "w", newline="", encoding='utf-8') as output:
+    with open(output_file, "w", newline="", encoding="utf-8") as output:
         wr = csv.writer(output)
-        wr.writerow(["Sites"] + measurement_buckets)
+        wr.writerow(["Sites"] + title_list)
         for site in input_dict:
             if output_as_percent:
                 wr.writerow(
@@ -129,11 +130,65 @@ def write_dict_to_file(output_file, input_dict, output_as_percent):
                 wr.writerow([site] + bucket_stats_dict[site])
 
 
-write_dict_to_file("output_dump/output.csv", bucket_stats_dict, False)
-write_dict_to_file("output_dump/output_percent.csv", bucket_stats_dict, True)
+write_dict_to_file(
+    "output_dump/output.csv", bucket_stats_dict, measurement_buckets, False
+)
+write_dict_to_file(
+    "output_dump/output_percent.csv", bucket_stats_dict, measurement_buckets, True
+)
 for region in regions_dict:
     write_dict_to_file(
-        f"output_dump/output_{region}.csv", region_stats_dict[region], False
+        f"output_dump/output_{region}.csv",
+        region_stats_dict[region],
+        measurement_buckets,
+        False,
     )
 
+
 # Annex splitting
+def filter_list(unfiltered, filter):
+    return [p[0] for p in zip(unfiltered, filter) if p[1]]
+
+
+annex_1_filter = [
+    True if m[1] in config["Annex_1_buckets"] else False for m in measurement_buckets
+]
+annex_2_filter = [
+    True if m[1] in config["Annex_2_buckets"] else False for m in measurement_buckets
+]
+annex_3_dict = {k: bucket_stats_dict[k] for k in config["Annex_3_sites"]}
+
+rivers_dict = {
+    k: bucket_stats_dict[k]
+    for k in bucket_stats_dict
+    if k not in config["Annex_3_sites"]
+}
+annex_1_dict = {k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_dict}
+annex_2_dict = {k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_dict}
+
+write_dict_to_file(
+    "output_dump/output_annex1.csv",
+    annex_1_dict,
+    filter_list(measurement_buckets, annex_1_filter),
+)
+write_dict_to_file(
+    "output_dump/output_annex2.csv",
+    annex_2_dict,
+    filter_list(measurement_buckets, annex_2_filter),
+)
+write_dict_to_file("output_dump/output_annex3.csv", annex_3_dict, measurement_buckets)
+write_dict_to_file(
+    "output_dump/output_annex1_percent.csv",
+    annex_1_dict,
+    filter_list(measurement_buckets, annex_1_filter),
+    True,
+)
+write_dict_to_file(
+    "output_dump/output_annex2_percent.csv",
+    annex_2_dict,
+    filter_list(measurement_buckets, annex_2_filter),
+    True,
+)
+write_dict_to_file(
+    "output_dump/output_annex3_percent.csv", annex_3_dict, measurement_buckets, True
+)

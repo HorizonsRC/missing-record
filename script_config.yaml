@@ -5,7 +5,7 @@ export_file: "output_dump/missing.csv"
 start: "2024-04-01 00:00"
 end: "2024-05-01 00:00"
 
-Annew_3_sites:
+Annex_3_sites:
     - Lake Dudding
     - Lake Heaton
     - Lake Herbert

@@ -1,4 +1,5 @@
 """Send an email with the given html content."""
+
 import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -32,12 +33,38 @@ def send_email(recipient, subject, html_content):
     with smtplib.SMTP(EMAIL_SERVER, 587) as smtp:
         smtp.starttls()
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        smtp.sendmail(EMAIL_ADDRESS, EMAIL_RECIPIENT, msg.as_string())
+        smtp.sendmail(EMAIL_ADDRESS, recipient, msg.as_string())
 
 
 if __name__ == "__main__":
+    sending_list = {
+        "CENTRAL_RECIPIENTS": [
+            "Hi fake Paul, please tell Sam you got central's report",
+            "_Central",
+        ],
+        "EASTERN_RECIPIENTS": [
+            "Hi fake Tane, please tell Sam you got eastern's report",
+            "_Eastern",
+        ],
+        "NORTHERN_RECIPIENTS": [
+            "Hi fake Nathan, please tell Sam you got northern's report",
+            "_Northern",
+        ],
+        "SPECIAL_RECIPIENTS": [
+            "Hi fake Brownie, please tell Sam you got special's report",
+            "_Special",
+        ],
+    }
     subject = "TESTING THE Missing Values Report"
     with open("output_dump/output.html") as html_file:
         html_content = html_file.read()
-    send_email(EMAIL_RECIPIENT, subject, html_content)
-    print("Email sent successfully!")
+
+    for recipients in sending_list:
+        for recipient in recipients.split(","):
+            print(os.getenv(recipient))
+            with open(
+                f"output_dump/output{sending_list[recipient][1]}.html"
+            ) as html_file:
+                html_content = html_file.read()
+            send_email(os.getenv(recipient), sending_list[recipient][0], html_content)
+    print("Email(s) sent successfully!")

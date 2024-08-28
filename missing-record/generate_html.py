@@ -1,12 +1,15 @@
 """Tools for displaying the missing record report in HTML format."""
 
 import pandas as pd
+import yaml
 from matplotlib import colors
 
 from utils import get_hex_colour, invert_colour
 
 
-def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
+def generate_html(
+    csv_file, output_filepath, title_info="", bad_hours=744, cmap="autumn_r"
+):
     """Generate an HTML report of the missing records in the CSV file.
 
     Parameters
@@ -15,6 +18,8 @@ def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
         The path to the CSV file containing the missing records.
     output_filepath : str
         The path to save the generated HTML report.
+    title_info : str, optional
+        Any title information that should go above the html table.
     bad_hours : int, optional
         The number of hours that should be considered a very bad record.
         Default is 744 hours (31 days).
@@ -38,17 +43,12 @@ def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
     )
 
     # Parse all columns except the first one as timedelta objects
-    missing_records.iloc[:, 1:] = missing_records.iloc[:, 1:].astype(
-        "timedelta64[s]"
-    )
+    missing_records.iloc[:, 1:] = missing_records.iloc[:, 1:].astype("timedelta64[s]")
 
     # Convert all timedelta objects to total hours
     missing_records.iloc[:, 1:] = missing_records.iloc[:, 1:].map(
         lambda x: x.total_seconds() / 3600
     )
-
-    # Hours that should be considered a very bad record
-    bad_hours = 744
 
     normfunc = colors.Normalize(vmin=0, vmax=bad_hours)
 
@@ -78,7 +78,7 @@ def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
     )
 
     # Remove the index column and left align the first column
-    styled_df = styled_df.set_properties(**{"text-align": "left"}).hide_index()
+    styled_df = styled_df.set_properties(**{"text-align": "left"}).hide(axis="index")
 
     # Some more detailed styling
     styled_df.set_table_styles(
@@ -93,7 +93,7 @@ def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
             {"selector": "table", "props": [("border-collapse", "collapse")]},
         ]
     )
-    
+
     # Trying again to collapse the borders (still only successful sometimes)
     styled_df.set_properties(**{"border-collapse": "collapse"})
 
@@ -108,8 +108,25 @@ def generate_html(csv_file, output_filepath, bad_hours=744, cmap="autumn_r"):
 
     # Output the html report to a file
     with open(output_filepath, "w") as output_file:
+        output_file.write(title_info)
         output_file.write(html_report)
 
+
+def generate_title(location, start_date, end_date):
+    title = ""
+    title += f"<h1>Monthly missing data report for {location}</h1>"
+    title += f"<h3>From {start_date} to {end_date}</h3>"
+    return title
+
+
 if __name__ == "__main__":
-    generate_html("output_dump/missing_records.csv", "output_dump/output.html")
+    generate_html("./output_dump/output.csv", "./output_dump/output.html")
+    with open("script_config.yaml") as file:
+        config = yaml.safe_load(file)
+    for region in ["Central", "Eastern", "Northern", "Special"]:
+        generate_html(
+            f"./output_dump/output_{region}.csv",
+            f"./output_dump/output_{region}.html",
+            generate_title(region, config["start"], config["end"]),
+        )
     print("HTML report generated successfully!")
