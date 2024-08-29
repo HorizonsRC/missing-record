@@ -4,7 +4,9 @@ import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import time
 
+import yaml
 from dotenv import load_dotenv
 
 # Load the environment variables
@@ -34,37 +36,33 @@ def send_email(recipient, subject, html_content):
         smtp.starttls()
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.sendmail(EMAIL_ADDRESS, recipient, msg.as_string())
+    print(f"Sent to {recipient}, next email sending in 12 seconds...")
+    time.sleep(12)
 
 
-if __name__ == "__main__":
-    sending_list = {
-        "CENTRAL_RECIPIENTS": [
-            "Hi fake Paul, please tell Sam you got central's report",
-            "_Central",
-        ],
-        "EASTERN_RECIPIENTS": [
-            "Hi fake Tane, please tell Sam you got eastern's report",
-            "_Eastern",
-        ],
-        "NORTHERN_RECIPIENTS": [
-            "Hi fake Nathan, please tell Sam you got northern's report",
-            "_Northern",
-        ],
-        "SPECIAL_RECIPIENTS": [
-            "Hi fake Brownie, please tell Sam you got special's report",
-            "_Special",
-        ],
-    }
-    subject = "TESTING THE Missing Values Report"
-    with open("output_dump/output.html") as html_file:
+def send():
+    with open("config_files/recipients.yaml") as file:
+        sending_list = yaml.safe_load(file)
+    with open("output_html/output.html") as html_file:
         html_content = html_file.read()
 
     for recipients in sending_list:
         for recipient in recipients.split(","):
-            print(os.getenv(recipient))
-            with open(
-                f"output_dump/output{sending_list[recipient][1]}.html"
-            ) as html_file:
-                html_content = html_file.read()
-            send_email(os.getenv(recipient), sending_list[recipient][0], html_content)
+            html_content = (
+                "<p>This is a test of the missing record report</p>"
+                "<p>Let Sam know if this is completely broken</p>"
+                "<p>Though I guess if it was completely broken you wouldn't see this</p>"
+                "<p>I think you have a team leader meeting on the 10th</p>"
+                "<p>If you have feedback share it there?</p>"
+            )
+            for suffix in sending_list[recipient]["file_suffix"]:
+                with open(f"output_html/output{suffix}.html") as html_file:
+                    html_content += html_file.read()
+            send_email(
+                os.getenv(recipient), sending_list[recipient]["title"], html_content
+            )
     print("Email(s) sent successfully!")
+
+
+if __name__ == "__main__":
+    send()

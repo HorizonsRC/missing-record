@@ -1,0 +1,26 @@
+"CENTRAL_RECIPIENTS":
+    "title": "Central monthly missing record test"
+    "file_suffix":
+        - "_Central"
+"EASTERN_RECIPIENTS":
+    "title": "Eastern monthly missing record test"
+    "file_suffix":
+        - "_Eastern"
+"NORTHERN_RECIPIENTS":
+    "title": "Northern monthly missing record test"
+    "file_suffix":
+        - "_Northern"
+"SPECIAL_RECIPIENTS":
+    "title": "Special projects monthly missing record test"
+    "file_suffix":
+        - "_Special"
+"ANNEX_SUMMARY_RECIPIENTS":
+    "title": "Summary monthly missing record test"
+    "file_suffix":
+        - "_annex1"
+        - "_annex2"
+        - "_annex3"
+"DATA_MONKEY":
+    "title": "Dance data monkey dance! Monthly missing record is here"
+    "file_suffix":
+        - ""

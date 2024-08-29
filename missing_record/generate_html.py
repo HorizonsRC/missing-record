@@ -119,14 +119,26 @@ def generate_title(location, start_date, end_date):
     return title
 
 
-if __name__ == "__main__":
-    generate_html("./output_dump/output.csv", "./output_dump/output.html")
-    with open("script_config.yaml") as file:
+def generate():
+    generate_html("./output_csv/output.csv", "./output_html/output.html")
+    with open("config_files/script_config.yaml") as file:
         config = yaml.safe_load(file)
-    for region in ["Central", "Eastern", "Northern", "Special"]:
+    for region in [
+        "Central",
+        "Eastern",
+        "Northern",
+        "Special",
+        "annex1",
+        "annex2",
+        "annex3",
+    ]:
         generate_html(
-            f"./output_dump/output_{region}.csv",
-            f"./output_dump/output_{region}.html",
+            f"./output_csv/output_{region}.csv",
+            f"./output_html/output_{region}.html",
             generate_title(region, config["start"], config["end"]),
         )
     print("HTML report generated successfully!")
+
+
+if __name__ == "__main__":
+    generate()
