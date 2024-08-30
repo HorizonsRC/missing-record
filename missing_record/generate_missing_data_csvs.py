@@ -90,12 +90,16 @@ def generate():
     measurement_buckets = list(set([m[1] for m in measurements]))
 
     bucket_stats_dict = {}
+    bucket_totals_dict = {}
+    diff = pd.to_datetime(config["end"]) - pd.to_datetime(config["start"])
     for site in all_stats_dict:
         site_bucket_dict = dict([(m, []) for m in measurement_buckets])
+        site_totals_dict = dict([(m, []) for m in measurement_buckets])
         for i in zip(measurements, all_stats_dict[site], strict=True):
             site_bucket_dict[i[0][1]].append(i[1])
         for bucket in site_bucket_dict:
             nanless = [m for m in site_bucket_dict[bucket] if m is not np.nan]
+            site_totals_dict[bucket] = diff * len(nanless)
             if len(nanless) == 0:
                 site_bucket_dict[bucket] = np.nan
             elif len(nanless) == 1:
@@ -111,6 +115,7 @@ def generate():
                 # site_bucket_dict[bucket] = max([pd.to_timedelta(n) for n in nanless])
 
         bucket_stats_dict[site] = [site_bucket_dict[m] for m in measurement_buckets]
+        bucket_totals_dict[site] = [site_totals_dict[m] for m in measurement_buckets]
 
     def write_dict_to_file(output_file, input_dict, title_list, output_as_percent):
         """Writes a dict into csv."""
@@ -186,6 +191,9 @@ def generate():
     )
     write_dict_to_file(
         "output_csv/output_annex3.csv", annex_3_dict, measurement_buckets, False
+    )
+    write_dict_to_file(
+        "output_csv/output_totals.csv", bucket_totals_dict, measurement_buckets, False
     )
 
 
