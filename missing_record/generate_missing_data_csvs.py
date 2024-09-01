@@ -11,7 +11,7 @@ from hydrobot.data_acquisition import get_data
 from hydrobot.utils import infer_frequency
 from pandas.tseries.frequencies import to_offset
 
-import site_list_merge
+import missing_record.site_list_merge as site_list_merge
 
 
 def generate():

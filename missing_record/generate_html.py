@@ -1,10 +1,11 @@
 """Tools for displaying the missing record report in HTML format."""
 
 import pandas as pd
+import numpy as np
 import yaml
 from matplotlib import colors
 
-from utils import get_hex_colour, invert_colour
+from missing_record.utils import get_hex_colour, invert_colour
 
 
 def generate_html(
@@ -88,9 +89,9 @@ def generate_html(
             # Set all fonts to a gorgeous monospace font
             {"selector": "td, th", "props": [("font-family", "monospace")]},
             # Add a thin lightgrey border around the cells
-            {"selector": "table, td, th", "props": [("border", "1px solid #d3d3d3")]},
+            {"selector": ", td, th", "props": [("border", "1px solid #d3d3d3")]},
             # Collapse the cell borders into single lines
-            {"selector": "table", "props": [("border-collapse", "collapse")]},
+            {"selector": "", "props": [("border-collapse", "collapse")]},
         ]
     )
 
