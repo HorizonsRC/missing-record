@@ -50,7 +50,7 @@ def generate():
             config["base_url"],
             config["hts"],
             site,
-            measurement,
+            measurement[0],
             start,
             end,
         )
@@ -61,8 +61,13 @@ def generate():
         series = blob[0].data.timeseries[blob[0].data.timeseries.columns[0]]
         series.index = pd.DatetimeIndex(series.index)
 
-        freq = infer_frequency(series.index, method="mode")
-        series = series.reindex(pd.date_range(start, end, freq=freq))
+        if measurement[1] in ["Rainfall", "Rainfall Backup"]:
+            freq = "2h"
+            series.index = series.index.floor(freq)
+            series = series[~series.index.duplicated(keep="first")]
+        else:
+            freq = infer_frequency(series.index, method="mode")
+            series = series.reindex(pd.date_range(start, end, freq=freq))
         missing_points = series.asfreq(freq).isna().sum()
         return str(missing_points * pd.to_timedelta(to_offset(freq)))
 
@@ -74,7 +79,7 @@ def generate():
             try:
                 site_stats_list.append(
                     report_missing_record(
-                        site["SiteName"], meas[0], config["start"], config["end"]
+                        site["SiteName"], meas, config["start"], config["end"]
                     )
                 )
             except ValueError as e:
