@@ -38,7 +38,6 @@ def generate():
         "Central": ["CENTRAL"],
         "Special": ["LAKES AND WQ", "Arawhata Piezometers"],
     }
-    annex_3_sites = {}
     for _, site in sites.iterrows():
         for region in regions_dict:
             if site.RegionName in regions_dict[region]:
