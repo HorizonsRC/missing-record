@@ -200,6 +200,86 @@ def generate():
         "output_csv/output_totals.csv", bucket_totals_dict, measurement_buckets, False
     )
 
+    # totals
+    rivers_totals = {
+        k: bucket_totals_dict[k]
+        for k in bucket_totals_dict
+        if k not in config["Annex_3_sites"]
+    }
+    annex_1_totals = {
+        k: filter_list(rivers_totals[k], annex_1_filter) for k in rivers_totals
+    }
+    annex_2_totals = {
+        k: filter_list(rivers_totals[k], annex_2_filter) for k in rivers_totals
+    }
+    annex_3_totals = {
+        k: bucket_totals_dict[k]
+        for k in config["Annex_3_sites"]
+        if k in bucket_stats_dict
+    }
+
+    totals_dict = {
+        k: pd.to_timedelta(0)
+        for k in [
+            "total_1_numerator",
+            "total_2_numerator",
+            "total_3_numerator",
+            "total_1_denominator",
+            "total_2_denominator",
+            "total_3_denominator",
+        ]
+    }
+
+    for pair in [
+        ["total_1_numerator", annex_1_dict],
+        ["total_2_numerator", annex_2_dict],
+        ["total_3_numerator", annex_3_dict],
+        ["total_1_denominator", annex_1_totals],
+        ["total_2_denominator", annex_2_totals],
+        ["total_3_denominator", annex_3_totals],
+    ]:
+        for site in pair[1]:
+            for i in [pd.to_timedelta(a) for a in pair[1][site] if a is not np.nan]:
+                totals_dict[pair[0]] += i
+
+    with open("output_csv/totals.csv", "w", newline="", encoding="utf-8") as output:
+        wr = csv.writer(output)
+        wr.writerow(["\\", "annex_1", "annex_2", "annex_3"])
+        wr.writerow(
+            [
+                "Total",
+                totals_dict["total_1_numerator"],
+                totals_dict["total_2_numerator"],
+                totals_dict["total_3_numerator"],
+            ]
+        )
+        wr.writerow(
+            [
+                "Percentage",
+                (
+                    totals_dict["total_1_numerator"]
+                    / totals_dict["total_1_denominator"]
+                    * 100
+                    if totals_dict["total_1_denominator"] > pd.to_timedelta(0)
+                    else "None"
+                ),
+                (
+                    totals_dict["total_2_numerator"]
+                    / totals_dict["total_2_denominator"]
+                    * 100
+                    if totals_dict["total_2_denominator"] > pd.to_timedelta(0)
+                    else "None"
+                ),
+                (
+                    totals_dict["total_3_numerator"]
+                    / totals_dict["total_3_denominator"]
+                    * 100
+                    if totals_dict["total_3_denominator"] > pd.to_timedelta(0)
+                    else "None"
+                ),
+            ]
+        )
+
 
 if __name__ == "__main__":
     generate()
