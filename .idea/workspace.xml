@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="totals" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2lDZB1WzFlD8Y20DQjahHm2022x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SIrvine/PycharmProjects/missing-record&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv\temp" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="" />
+      <created>1724716468188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724716468188</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Fixing stuff after migration">
+      <option name="closed" value="true" />
+      <created>1724725683173</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724725683173</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1724727612387</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724727612387</updated>
+    </task>
+    <task id="LOCAL-00003" summary="utf encoding">
+      <option name="closed" value="true" />
+      <created>1724731042486</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724731042486</updated>
+    </task>
+    <task id="LOCAL-00004" summary="sending emails working now">
+      <option name="closed" value="true" />
+      <created>1724820878357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724820878357</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Many changes that send it to everyone now">
+      <option name="closed" value="true" />
+      <created>1724904610925</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724904610925</updated>
+    </task>
+    <task id="LOCAL-00006" summary="counting totals">
+      <option name="closed" value="true" />
+      <created>1724983945284</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724983945284</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixing some details">
+      <option name="closed" value="true" />
+      <created>1725227862538</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725227862538</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sample env">
+      <option name="closed" value="true" />
+      <created>1725227996944</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725227996944</updated>
+    </task>
+    <task id="LOCAL-00009" summary="rainfall round to 2 hours">
+      <option name="closed" value="true" />
+      <created>1725241723513</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725241723513</updated>
+    </task>
+    <task id="LOCAL-00010" summary="cleaning up, fixing emails to multipel recipients">
+      <option name="closed" value="true" />
+      <created>1725245696322</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725245696322</updated>
+    </task>
+    <task id="LOCAL-00011" summary="totals">
+      <option name="closed" value="true" />
+      <created>1725503201066</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725503201066</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixing stuff after migration" />
+    <MESSAGE value="fixes" />
+    <MESSAGE value="utf encoding" />
+    <MESSAGE value="sending emails working now" />
+    <MESSAGE value="Many changes that send it to everyone now" />
+    <MESSAGE value="counting totals" />
+    <MESSAGE value="Fixing some details" />
+    <MESSAGE value="sample env" />
+    <MESSAGE value="rainfall round to 2 hours" />
+    <MESSAGE value="cleaning up, fixing emails to multipel recipients" />
+    <MESSAGE value="totals" />
+    <option name="LAST_COMMIT_MESSAGE" value="totals" />
+  </component>
+</project>
