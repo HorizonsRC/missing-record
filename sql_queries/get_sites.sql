@@ -14,4 +14,5 @@ SELECT Sites.SiteID, SiteName, Regions.RegionName
       RecordingAuthority1 = 'MWRC'
       OR RecordingAuthority2 = 'MWRC'
     )
+    AND Regions.BuiltFrom = 377
     AND Inactive = 0

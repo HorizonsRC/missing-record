@@ -40,6 +40,7 @@ def connect_to_db():
     engine = db.create_engine(connection_url)
     return engine
 
+
 def get_sites(engine):
     """
     Gives sites to check for missing data.

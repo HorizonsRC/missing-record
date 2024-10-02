@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="totals" />
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="workspace file that is annoying me">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/Active_Measurements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Active_Measurements.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/generate_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/site_list_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/site_list_merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_queries/get_sites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_queries/get_sites.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +52,8 @@
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html\dump" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv\dump" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv\temp" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
@@ -153,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725503201066</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="workspace file that is annoying me">
+      <option name="closed" value="true" />
+      <created>1727754201056</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727754201056</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -168,6 +186,7 @@
     <MESSAGE value="rainfall round to 2 hours" />
     <MESSAGE value="cleaning up, fixing emails to multipel recipients" />
     <MESSAGE value="totals" />
-    <option name="LAST_COMMIT_MESSAGE" value="totals" />
+    <MESSAGE value="workspace file that is annoying me" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace file that is annoying me" />
   </component>
 </project>

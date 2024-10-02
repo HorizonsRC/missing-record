@@ -120,6 +120,11 @@ def generate_title(location, start_date, end_date):
     return title
 
 
+def generate_highlights():
+    output = None
+    return output
+
+
 def generate():
     generate_html("./output_csv/output.csv", "./output_html/output.html")
     with open("config_files/script_config.yaml") as file:
@@ -138,7 +143,7 @@ def generate():
             f"./output_html/output_{region}.html",
             generate_title(region, config["start"], config["end"]),
         )
-    print("HTML report generated successfully!")
+    print("HTML reports generated successfully!")
 
 
 if __name__ == "__main__":

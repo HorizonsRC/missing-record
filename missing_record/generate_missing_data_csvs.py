@@ -14,17 +14,41 @@ from pandas.tseries.frequencies import to_offset
 import missing_record.site_list_merge as site_list_merge
 
 
-def generate():
+def generate(debug=False):
     warnings.filterwarnings("ignore", message=".*Empty hilltop response:.*")
 
     with open("config_files/script_config.yaml") as file:
         config = yaml.safe_load(file)
 
     sites = site_list_merge.get_sites(site_list_merge.connect_to_db())
+    # This gets rid of sites that are assigned to multiple regions
+    # Currently it just picks out the last region alphabetically
+    # So lakes gets chosen over central, which is the only problem I have found currently
+    # This might break for sites assigned to 3+ regions?
+    # But it's good enough for now
+    sites = sites[~sites.duplicated(keep="first", subset="SiteName")].sort_values(
+        ["SiteName", "RegionName"]
+    )
+
+    if debug:
+        debug_site_list = [
+            "Pohangina at Mais Reach",
+            "Matarawa at City Branch",
+            "Turakina at Otairi",
+            "Whangaehu at Kauangaroa",
+            "Manawatu at Teachers College",
+            "Lake William",
+            "Lake Dudding",
+            "Butlers",
+        ]
+
+        sites = sites[sites["SiteName"].isin(debug_site_list)]
 
     with open("config_files/Active_Measurements.csv", newline="") as f:
         reader = csv.reader(f)
         measurements = [(row[0], row[1]) for row in reader if len(row) > 0]
+    # Remove duplicates without changing order
+    measurement_buckets = list(dict.fromkeys([m[1] for m in measurements]))
 
     region_stats_dict = {
         "Northern": [],
@@ -45,6 +69,7 @@ def generate():
 
     def report_missing_record(site, measurement, start, end):
         """Reports minutes missing."""
+
         _, blob = get_data(
             config["base_url"],
             config["hts"],
@@ -90,9 +115,6 @@ def generate():
         all_stats_dict[site["SiteName"]] = site_stats_list
         print(site.SiteName, time.time() - start_timer)
 
-    # convert to measurement bucket
-    measurement_buckets = list(set([m[1] for m in measurements]))
-
     bucket_stats_dict = {}
     bucket_totals_dict = {}
     diff = pd.to_datetime(config["end"]) - pd.to_datetime(config["start"])
@@ -121,9 +143,10 @@ def generate():
         bucket_stats_dict[site] = [site_bucket_dict[m] for m in measurement_buckets]
         bucket_totals_dict[site] = [site_totals_dict[m] for m in measurement_buckets]
 
-    def write_dict_to_file(output_file, input_dict, title_list, output_as_percent):
+    def write_dict_to_file(
+        output_file, input_dict, input_totals, title_list, output_as_percent
+    ):
         """Writes a dict into csv."""
-        diff = pd.to_datetime(config["end"]) - pd.to_datetime(config["start"])
         with open(output_file, "w", newline="", encoding="utf-8") as output:
             wr = csv.writer(output)
             wr.writerow(["Sites"] + title_list)
@@ -132,24 +155,44 @@ def generate():
                     wr.writerow(
                         [site]
                         + [
-                            (i / diff) * 100 if i is not np.NaN else np.NaN
-                            for i in input_dict[site]
+                            (missing / total) * 100 if missing is not np.NaN else np.NaN
+                            for (missing, total) in zip(
+                                input_dict[site], input_totals[site], strict=True
+                            )
                         ]
                     )
                 else:
                     wr.writerow([site] + input_dict[site])
+        with open(output_file + "_totals", "w", newline="", encoding="utf-8") as output:
+            wr = csv.writer(output)
+            wr.writerow(["Sites"] + title_list)
+            for site in input_totals:
+                wr.writerow([site] + input_totals[site])
 
     write_dict_to_file(
-        "output_csv/output.csv", bucket_stats_dict, measurement_buckets, False
+        "output_csv/output.csv",
+        bucket_stats_dict,
+        bucket_totals_dict,
+        measurement_buckets,
+        False,
     )
     write_dict_to_file(
-        "output_csv/output_percent.csv", bucket_stats_dict, measurement_buckets, True
+        "output_csv/output_percent.csv",
+        bucket_stats_dict,
+        bucket_totals_dict,
+        measurement_buckets,
+        True,
     )
     for region in regions_dict:
         write_dict_to_file(
             f"output_csv/output_{region}.csv",
             {
                 k: bucket_stats_dict[k]
+                for k in bucket_stats_dict
+                if k in region_stats_dict[region]
+            },
+            {
+                k: bucket_totals_dict[k]
                 for k in bucket_stats_dict
                 if k in region_stats_dict[region]
             },
@@ -172,33 +215,55 @@ def generate():
         for k in config["Annex_3_sites"]
         if k in bucket_stats_dict
     }
+    annex_3_totals = {
+        k: bucket_totals_dict[k]
+        for k in config["Annex_3_sites"]
+        if k in bucket_totals_dict
+    }
 
     rivers_dict = {
         k: bucket_stats_dict[k]
         for k in bucket_stats_dict
         if k not in config["Annex_3_sites"]
     }
+    rivers_totals = {
+        k: bucket_totals_dict[k]
+        for k in bucket_totals_dict
+        if k not in config["Annex_3_sites"]
+    }
     annex_1_dict = {k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_dict}
     annex_2_dict = {k: filter_list(rivers_dict[k], annex_2_filter) for k in rivers_dict}
+    annex_1_totals = {
+        k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_totals
+    }
+    annex_2_totals = {
+        k: filter_list(rivers_dict[k], annex_2_filter) for k in rivers_totals
+    }
 
     write_dict_to_file(
         "output_csv/output_annex1.csv",
         annex_1_dict,
+        annex_1_totals,
         filter_list(measurement_buckets, annex_1_filter),
         False,
     )
     write_dict_to_file(
         "output_csv/output_annex2.csv",
         annex_2_dict,
+        annex_2_totals,
         filter_list(measurement_buckets, annex_2_filter),
         False,
     )
     write_dict_to_file(
-        "output_csv/output_annex3.csv", annex_3_dict, measurement_buckets, False
+        "output_csv/output_annex3.csv",
+        annex_3_dict,
+        annex_3_totals,
+        measurement_buckets,
+        False,
     )
-    write_dict_to_file(
+    """    write_dict_to_file(
         "output_csv/output_totals.csv", bucket_totals_dict, measurement_buckets, False
-    )
+    )"""
 
     # totals
     rivers_totals = {
@@ -282,4 +347,4 @@ def generate():
 
 
 if __name__ == "__main__":
-    generate()
+    generate(debug=True)

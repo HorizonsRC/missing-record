@@ -1,11 +1,14 @@
+Stage [Water Level],Water Level
+
+Rainfall [SCADA Rainfall],Rainfall
+Rainfall (backup) [SCADA Rainfall (backup)],Rainfall Backup
+
+Atmospheric Pressure [Atmospheric Pressure],Atmospheric Pressure
+
 Air Temperature (1.5m) [Air Temperature (1.5m)],Air Temperature
 Air Temperature (5m) [Air Temperature (5m)],Air Temperature
 Air Temperature (10m) [Air Temperature (10m)],Air Temperature
 Air Temperature [Air Temperature],Air Temperature
-
-Atmospheric Pressure [Atmospheric Pressure],Atmospheric Pressure
-
-Flow [Water Level],Flow
 
 Groundwater [GroundWater],Groundwater
 
@@ -14,9 +17,6 @@ Galert [Galert],Lahar
 
 PM10 (5min) [PM10 (5min)],Particulate Matter
 PM2.5 (5min) [PM2.5 (5min)],Particulate Matter
-
-Rainfall [SCADA Rainfall],Rainfall
-Rainfall (backup) [SCADA Rainfall (backup)],Rainfall Backup
 
 Relative Humidity [Relative Humidity],Relative Humidity
 
@@ -53,52 +53,15 @@ SM Ka [SM Ka],Soil
 40cm EC [40cm EC],Soil
 50cm EC [50cm EC],Soil
 
-Stage [Water Level],Water Level
-
 Wind Direction [Wind Direction (10m)],Wind
 Wind Speed [Wind Speed (10m)],Wind
 Wind Direction [Wind],Wind
 Wind Speed [Wind Speed (instantaneous)],Wind
 
-Blue Green Algae (-500 mm) [Blue Green Algae (-500 mm)],Blue Green Algae
-Blue Green Algae (-2000 mm) [Blue Green Algae (-2000 mm)],Blue Green Algae
-
-Chlorophyll (-500 mm) [Chlorophyll (-500 mm)],Chlorophyll
-Chlorophyll (-2000 mm) [Chlorophyll (-2000 mm)],Chlorophyll
-
-Conductivity Low Range (Raw) [Conductivity Low Range (Raw)],Conductivity
-Conductivity Low Range (T Comp) [Conductivity Low Range (T Comp)],Conductivity
-SP Conductivity (-500 mm) [SP Conductivity (-500 mm)],Conductivity
-Conductivity (-2000 mm) [Conductivity (-2000 mm)],Conductivity
-SP Conductivity (-2000 mm) [SP Conductivity (-2000 mm)],Conductivity
-
 DO Saturation [Dissolved Oxygen (%)],Dissolved Oxygen
 DO concentration [Dissolved Oxygen (ppm)],Dissolved Oxygen
 Dissolved Oxygen Saturation (-500 mm) [Dissolved Oxygen Saturation (-500 mm)],Dissolved Oxygen
 Dissolved Oxygen Saturation (-2000 mm) [Dissolved Oxygen Saturation (-2000 mm)],Dissolved Oxygen
-
-Nitrate (ISE) [Nitrate (ISE)],Nitrates
-Nitrate (-500 mm) [Nitrate (-500 mm)],Nitrates
-Nitrate (UV) [Nitrate (UV)],Nitrates
-NO3-N Concentration [NO3-N Concentration],Nitrates
-Absorbance at 220nm [Absorbance at 220nm],Nitrates
-Absorbance at 270nm [Absorbance at 270nm],Nitrates
-
-ORP [ORP],ORP
-ORP (-500 mm) [ORP (-500 mm)],ORP
-ORP (-2000 mm) [ORP (-2000 mm)],ORP
-
-pH [pH sensor],pH
-pH (-500 mm) [pH (-500 mm)],pH
-pH (-2000 mm) [pH (-2000 mm)],pH
-
-Turbidity: Point Sample [Turbidity: Point Sample],Turbidity
-Turbidity (ISO) [Turbidity (ISO)],Turbidity
-Turbidity (ISO) (-500 mm) [Turbidity (ISO) (-500 mm)],Turbidity
-Turbidity (Low Range): Point Sample [Turbidity (Low Range): Point Sample],Turbidity
-Turbidity (ISO) (-2000 mm) [Turbidity (ISO) (-2000 mm)],Turbidity
-Turbidity (ISO) - OBS [Turbidity (ISO) - OBS],Turbidity
-Suspended Sediment [Sediment Sensor],Turbidity
 
 Water Temperature [Water Temperature],Water Temperature
 Water Temperature [Dissolved Oxygen sensor],Water Temperature
@@ -123,3 +86,38 @@ Water Temperature (-9000 mm) [Water Temperature (-9000 mm)],Water Temperature
 Water Temperature (-9500 mm) [Water Temperature (-9500 mm)],Water Temperature
 Water Temperature (-10000 mm) [Water Temperature (-10000 mm)],Water Temperature
 Water Temperature [Conductivity sensor],Water Temperature
+
+Turbidity: Point Sample [Turbidity: Point Sample],Turbidity
+Turbidity (ISO) [Turbidity (ISO)],Turbidity
+Turbidity (ISO) (-500 mm) [Turbidity (ISO) (-500 mm)],Turbidity
+Turbidity (Low Range): Point Sample [Turbidity (Low Range): Point Sample],Turbidity
+Turbidity (ISO) (-2000 mm) [Turbidity (ISO) (-2000 mm)],Turbidity
+Turbidity (ISO) - OBS [Turbidity (ISO) - OBS],Turbidity
+Suspended Sediment [Sediment Sensor],Turbidity
+
+Blue Green Algae (-500 mm) [Blue Green Algae (-500 mm)],Blue Green Algae
+Blue Green Algae (-2000 mm) [Blue Green Algae (-2000 mm)],Blue Green Algae
+
+Chlorophyll (-500 mm) [Chlorophyll (-500 mm)],Chlorophyll
+Chlorophyll (-2000 mm) [Chlorophyll (-2000 mm)],Chlorophyll
+
+Conductivity Low Range (Raw) [Conductivity Low Range (Raw)],Conductivity
+Conductivity Low Range (T Comp) [Conductivity Low Range (T Comp)],Conductivity
+SP Conductivity (-500 mm) [SP Conductivity (-500 mm)],Conductivity
+Conductivity (-2000 mm) [Conductivity (-2000 mm)],Conductivity
+SP Conductivity (-2000 mm) [SP Conductivity (-2000 mm)],Conductivity
+
+Nitrate (ISE) [Nitrate (ISE)],Nitrates
+Nitrate (-500 mm) [Nitrate (-500 mm)],Nitrates
+Nitrate (UV) [Nitrate (UV)],Nitrates
+NO3-N Concentration [NO3-N Concentration],Nitrates
+Absorbance at 220nm [Absorbance at 220nm],Nitrates
+Absorbance at 270nm [Absorbance at 270nm],Nitrates
+
+ORP [ORP],ORP
+ORP (-500 mm) [ORP (-500 mm)],ORP
+ORP (-2000 mm) [ORP (-2000 mm)],ORP
+
+pH [pH sensor],pH
+pH (-500 mm) [pH (-500 mm)],pH
+pH (-2000 mm) [pH (-2000 mm)],pH
