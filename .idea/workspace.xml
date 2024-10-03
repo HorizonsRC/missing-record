@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom">
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/generate_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_html.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727907807185</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals">
+      <option name="closed" value="true" />
+      <created>1727925123521</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1727925123521</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -193,6 +199,7 @@
     <MESSAGE value="totals" />
     <MESSAGE value="workspace file that is annoying me" />
     <MESSAGE value="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom" />
+    <MESSAGE value="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals" />
   </component>
 </project>

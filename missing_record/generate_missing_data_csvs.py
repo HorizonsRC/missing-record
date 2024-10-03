@@ -349,6 +349,14 @@ def generate(debug=False):
                 ),
             ]
         )
+        wr.writerow(
+            [
+                "Length of record",
+                totals_dict["total_1_denominator"],
+                totals_dict["total_2_denominator"],
+                totals_dict["total_3_denominator"],
+            ]
+        )
 
 
 if __name__ == "__main__":
