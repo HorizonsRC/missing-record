@@ -163,7 +163,12 @@ def generate(debug=False):
                     )
                 else:
                     wr.writerow([site] + input_dict[site])
-        with open(output_file + "_totals", "w", newline="", encoding="utf-8") as output:
+        with open(
+            output_file[:-4] + "_totals" + output_file[-4:],
+            "w",
+            newline="",
+            encoding="utf-8",
+        ) as output:
             wr = csv.writer(output)
             wr.writerow(["Sites"] + title_list)
             for site in input_totals:
@@ -234,10 +239,10 @@ def generate(debug=False):
     annex_1_dict = {k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_dict}
     annex_2_dict = {k: filter_list(rivers_dict[k], annex_2_filter) for k in rivers_dict}
     annex_1_totals = {
-        k: filter_list(rivers_dict[k], annex_1_filter) for k in rivers_totals
+        k: filter_list(rivers_totals[k], annex_1_filter) for k in rivers_totals
     }
     annex_2_totals = {
-        k: filter_list(rivers_dict[k], annex_2_filter) for k in rivers_totals
+        k: filter_list(rivers_totals[k], annex_2_filter) for k in rivers_totals
     }
 
     write_dict_to_file(

@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="workspace file that is annoying me">
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Active_Measurements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Active_Measurements.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missing_record/generate_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_html.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/site_list_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/site_list_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_queries/get_sites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_queries/get_sites.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,15 +31,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/SIrvine/PycharmProjects/missing-record&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.generate_html.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/SIrvine/PycharmProjects/missing-record",
+    "settings.editor.selected.configurable": "actions.on.save"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
@@ -171,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727754201056</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom">
+      <option name="closed" value="true" />
+      <created>1727907807185</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727907807185</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,6 +192,7 @@
     <MESSAGE value="cleaning up, fixing emails to multipel recipients" />
     <MESSAGE value="totals" />
     <MESSAGE value="workspace file that is annoying me" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace file that is annoying me" />
+    <MESSAGE value="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom" />
   </component>
 </project>
