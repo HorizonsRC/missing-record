@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals">
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="adding length of record to annex total report">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/script_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/script_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/send_email.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,23 +36,24 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.generate_html.executor": "Debug",
+    "Python.generate_missing_data_csvs.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/SIrvine/PycharmProjects/missing-record",
+    "last_opened_file_path": "C:/Users/SIrvine/PycharmProjects/missing-record/output_html",
     "settings.editor.selected.configurable": "actions.on.save"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
-      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html\dump" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv\dump" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html\dump" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv\temp" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
@@ -182,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727925123521</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="adding length of record to annex total report">
+      <option name="closed" value="true" />
+      <created>1727927337209</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1727927337209</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,6 +213,7 @@
     <MESSAGE value="workspace file that is annoying me" />
     <MESSAGE value="Shifting order and making order set, making debug site list, making totals available as separate csvs, removing duplicate sites via Regions.BuiltFrom" />
     <MESSAGE value="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals" />
+    <MESSAGE value="adding length of record to annex total report" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding length of record to annex total report" />
   </component>
 </project>

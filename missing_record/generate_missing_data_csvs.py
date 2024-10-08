@@ -35,11 +35,11 @@ def generate(debug=False):
             "Pohangina at Mais Reach",
             "Matarawa at City Branch",
             "Turakina at Otairi",
-            "Whangaehu at Kauangaroa",
             "Manawatu at Teachers College",
             "Lake William",
             "Lake Dudding",
             "Butlers",
+            "Whangaehu at Kauangaroa",
         ]
 
         sites = sites[sites["SiteName"].isin(debug_site_list)]
@@ -47,6 +47,10 @@ def generate(debug=False):
     with open("config_files/Active_Measurements.csv", newline="") as f:
         reader = csv.reader(f)
         measurements = [(row[0], row[1]) for row in reader if len(row) > 0]
+    if debug:
+        measurements = [
+            m for m in measurements if m[1] in ["Rainfall", "Rainfall Backup"]
+        ]
     # Remove duplicates without changing order
     measurement_buckets = list(dict.fromkeys([m[1] for m in measurements]))
 
@@ -86,12 +90,17 @@ def generate(debug=False):
         series.index = pd.DatetimeIndex(series.index)
 
         if measurement[1] in ["Rainfall", "Rainfall Backup"]:
-            freq = "2h"
+            freq = "24h"
             series.index = series.index.floor(freq)
             series = series[~series.index.duplicated(keep="first")]
         else:
-            freq = infer_frequency(series.index, method="mode")
-            series = series.reindex(pd.date_range(start, end, freq=freq))
+            freq = "1h"
+            series.index = series.index.floor(freq)
+            series = series[~series.index.duplicated(keep="first")]
+
+            # For when frequency is consistent
+            # freq = infer_frequency(series.index, method="mode")
+            # series = series.reindex(pd.date_range(start, end, freq=freq))
         missing_points = series.asfreq(freq).isna().sum()
         return str(missing_points * pd.to_timedelta(to_offset(freq)))
 
@@ -360,4 +369,4 @@ def generate(debug=False):
 
 
 if __name__ == "__main__":
-    generate(debug=True)
+    generate(debug=False)
