@@ -40,6 +40,7 @@ def generate(debug=False):
             "Lake Dudding",
             "Butlers",
             "Whangaehu at Kauangaroa",
+            "Rangitikei at Onepuhi",
         ]
 
         sites = sites[sites["SiteName"].isin(debug_site_list)]
@@ -49,7 +50,9 @@ def generate(debug=False):
         measurements = [(row[0], row[1]) for row in reader if len(row) > 0]
     if debug:
         measurements = [
-            m for m in measurements if m[1] in ["Rainfall", "Rainfall Backup"]
+            m
+            for m in measurements
+            if m[1] in ["Rainfall", "Rainfall Backup", "Water Level"]
         ]
     # Remove duplicates without changing order
     measurement_buckets = list(dict.fromkeys([m[1] for m in measurements]))
@@ -100,7 +103,8 @@ def generate(debug=False):
 
             # For when frequency is consistent
             # freq = infer_frequency(series.index, method="mode")
-            # series = series.reindex(pd.date_range(start, end, freq=freq))
+
+        series = series.reindex(pd.date_range(start, end, freq=freq))
         missing_points = series.asfreq(freq).isna().sum()
         return str(missing_points * pd.to_timedelta(to_offset(freq)))
 

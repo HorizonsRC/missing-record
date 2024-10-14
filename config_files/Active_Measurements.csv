@@ -1,7 +1,6 @@
 Stage [Water Level],Water Level
 
 Rainfall [SCADA Rainfall],Rainfall
-Rainfall (backup) [SCADA Rainfall (backup)],Rainfall Backup
 
 Atmospheric Pressure [Atmospheric Pressure],Atmospheric Pressure
 

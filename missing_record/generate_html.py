@@ -151,6 +151,11 @@ def generate_highlights(csv_input: str, csv_totals: str):
             )
         missing_time = data.apply(pd.to_timedelta).sum(axis=1)
         length_of_record = totals.apply(pd.to_timedelta).sum(axis=1)
+
+        output += (
+            f"<p>Total missing time: {missing_time.sum()} (out of {length_of_record.sum()})</p>"
+            f"Missing Percentage: {missing_time.sum() / length_of_record.sum() * 100.:.2f}%</p>"
+        )
         output += (
             f"<p>Site with most missing data: {missing_time.idxmax()}, with {missing_time[missing_time.idxmax()]} "
             f"missing ({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
