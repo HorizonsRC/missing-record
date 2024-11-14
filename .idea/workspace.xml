@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="requested changes">
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Removing backup&#10;&#10;Annex labels of total missing data and %&#10;&#10;Fix for missing data at start/end&#10;&#10;Main script copies to ares&#10;&#10;Points to tsdata envirodata server">
+      <change afterPath="$PROJECT_DIR$/config_files/monthly_config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config_files/weekly_config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monthly_report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weekly_report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/Active_Measurements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/Active_Measurements.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_files/script_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/script_config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missing_record/generate_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_html.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/send_email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,18 +42,20 @@
   "keyToString": {
     "Python.generate_html.executor": "Debug",
     "Python.generate_missing_data_csvs.executor": "Debug",
+    "Python.monthly_report.executor": "Run",
+    "Python.weekly_report.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/SIrvine/PycharmProjects/missing-record/output_html",
+    "last_opened_file_path": "C:/Users/SIrvine/PycharmProjects/missing-record",
     "settings.editor.selected.configurable": "actions.on.save"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\config_files" />
+      <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_html" />
       <recent name="C:\Users\SIrvine\PycharmProjects\missing-record\output_csv" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -204,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728360038341</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Removing backup&#10;&#10;Annex labels of total missing data and %&#10;&#10;Fix for missing data at start/end&#10;&#10;Main script copies to ares&#10;&#10;Points to tsdata envirodata server">
+      <option name="closed" value="true" />
+      <created>1728864753934</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1728864753934</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -224,6 +238,7 @@
     <MESSAGE value="Empty data checks&#10;Shifted sites to be the index&#10;Selects top 3 worst sites and shows stats for them&#10;Fixed annex 1/2 totals" />
     <MESSAGE value="adding length of record to annex total report" />
     <MESSAGE value="requested changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="requested changes" />
+    <MESSAGE value="Removing backup&#10;&#10;Annex labels of total missing data and %&#10;&#10;Fix for missing data at start/end&#10;&#10;Main script copies to ares&#10;&#10;Points to tsdata envirodata server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing backup&#10;&#10;Annex labels of total missing data and %&#10;&#10;Fix for missing data at start/end&#10;&#10;Main script copies to ares&#10;&#10;Points to tsdata envirodata server" />
   </component>
 </project>

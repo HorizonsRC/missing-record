@@ -3,21 +3,18 @@
 import csv
 import time
 import warnings
-
 import numpy as np
 import pandas as pd
 import yaml
 from hydrobot.data_acquisition import get_data
-from hydrobot.utils import infer_frequency
 from pandas.tseries.frequencies import to_offset
-
 import missing_record.site_list_merge as site_list_merge
 
 
-def generate(debug=False):
+def generate(config_file_path, debug=False):
     warnings.filterwarnings("ignore", message=".*Empty hilltop response:.*")
 
-    with open("config_files/script_config.yaml") as file:
+    with open(config_file_path) as file:
         config = yaml.safe_load(file)
 
     sites = site_list_merge.get_sites(site_list_merge.connect_to_db())
@@ -373,4 +370,4 @@ def generate(debug=False):
 
 
 if __name__ == "__main__":
-    generate(debug=False)
+    generate("config_files/script_config.yaml", debug=False)

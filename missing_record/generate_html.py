@@ -182,10 +182,18 @@ def generate_highlights(csv_input: str, csv_totals: str):
     return output
 
 
-def generate():
-    generate_html("./output_csv/output.csv", "./output_html/output.html")
-    with open("config_files/script_config.yaml") as file:
+def generate(file_path):
+    with open(file_path) as file:
         config = yaml.safe_load(file)
+    generate_html(
+        "./output_csv/output.csv",
+        "./output_html/output.html",
+        title_info=generate_title("all regions", config["start"], config["end"])
+        + generate_highlights(
+            f"./output_csv/output.csv",
+            f"./output_csv/output_totals.csv",
+        ),
+    )
     for region in [
         "Central",
         "Eastern",
@@ -198,7 +206,7 @@ def generate():
         generate_html(
             f"./output_csv/output_{region}.csv",
             f"./output_html/output_{region}.html",
-            generate_title(region, config["start"], config["end"])
+            title_info=generate_title(region, config["start"], config["end"])
             + generate_highlights(
                 f"./output_csv/output_" f"{region}.csv",
                 f"./output_csv/output_" f"{region}_totals.csv",
@@ -208,4 +216,4 @@ def generate():
 
 
 if __name__ == "__main__":
-    generate()
+    generate("config_files/script_config.yaml")

@@ -47,14 +47,9 @@ def send():
 
     for recipient in sending_list:
         html_content = (
-            "<p>This is a test of the missing record report for September v3</p>"
-            "<p>I reduced rainfall sensitivity</p>"
-            "<p>Now doesn't report as missing unless it is missing data for 24 hours</p>"
-            "<p>Everything else as a tolerance of 1 hour (to allow for sites with non-standard frequencies)</p>"
-            "<pFor the future I am working on an approach that uses gaps</p>"
+            "<p>Missing record report beta</p>"
             "<p>This can be viewed with colours at:</p>"
             r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting</p>"
-            "<p>For real this time, it's actually updated (I hope)</p>"
         )
         for suffix in sending_list[recipient]["file_suffix"]:
             with open(f"output_html/output{suffix}.html") as html_file:
@@ -72,7 +67,7 @@ def copy_files(destination):
         for suffix in sending_list[recipient]["file_suffix"]:
             shutil.copy(f"output_html/output{suffix}.html", destination)
 
-    print("Email(s) sent successfully!")
+    print("Files copied!")
 
 
 if __name__ == "__main__":
