@@ -1,0 +1,45 @@
+INSERT INTO Monthly_missing_minutes(
+	end_date
+	,Water_Level
+	,Rainfall
+	,Atmospheric_Pressure
+	,Air_Temperature
+	,Groundwater
+	,Lahar
+	,Particulate_Matter
+	,Relative_Humidity
+	,Soil
+	,Wind
+	,Dissolved_Oxygen
+	,Water_Temperature
+	,Turbidity
+	,Blue_Green_Algae
+	,Chlorophyll
+	,Conductivity
+	,Nitrates
+	,ORP
+	,pH
+)
+VALUES
+(
+	:end_date
+	,:Water_Level
+	,:Rainfall
+	,:Atmospheric_Pressure
+	,:Air_Temperature
+	,:Groundwater
+	,:Lahar
+	,:Particulate_Matter
+	,:Relative_Humidity
+	,:Soil
+	,:Wind
+	,:Dissolved_Oxygen
+	,:Water_Temperature
+	,:Turbidity
+	,:Blue_Green_Algae
+	,:Chlorophyll
+	,:Conductivity
+	,:Nitrates
+	,:ORP
+	,:pH
+);

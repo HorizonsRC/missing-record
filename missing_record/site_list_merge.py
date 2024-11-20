@@ -16,6 +16,7 @@ DB_HOST_WIN = os.getenv("DB_HOST_WIN")
 DB_HOST_LIN = os.getenv("DB_HOST_LIN")
 DB_NAME = os.getenv("DB_NAME")
 DB_DRIVER = os.getenv("DB_DRIVER")
+DB_DEV_HOST = os.getenv("DB_DEV_HOST")
 
 
 def connect_to_db():
@@ -35,6 +36,27 @@ def connect_to_db():
         "mssql+pyodbc",
         host=hostname,
         database=DB_NAME,
+        query={"driver": DB_DRIVER},
+    )
+    engine = db.create_engine(connection_url)
+    return engine
+
+
+def connect_to_dev_db():
+    """Connect to the Hilltop database.
+    Returns
+    -------
+    sqlalchemy.engine.base.Engine
+        A connection to the Hilltop database.
+    """
+    if platform.system() == "Windows":
+        hostname = DB_DEV_HOST
+    else:
+        raise OSError("What is this, a mac? We don't do that here.")
+    connection_url = URL.create(
+        "mssql+pyodbc",
+        host=hostname,
+        database="Piri",
         query={"driver": DB_DRIVER},
     )
     engine = db.create_engine(connection_url)
@@ -74,3 +96,17 @@ def get_measurements(engine):
         + "]"
     )
     return measurement_list
+
+
+def insert_missing_totals(missing_dict, engine):
+    with open("sql_queries/insert_missing.sql") as f:
+        query = f.read()
+    with engine.begin() as conn:
+        conn.execute(db.text(query), missing_dict)
+
+
+def insert_recorded_totals(totals_dict, engine):
+    with open("sql_queries/insert_total.sql") as f:
+        query = f.read()
+    with engine.begin() as conn:
+        conn.execute(db.text(query), totals_dict)

@@ -6,6 +6,7 @@ import yaml
 from matplotlib import colors
 
 from missing_record.utils import get_hex_colour, invert_colour
+import missing_record.site_list_merge as slm
 
 
 def generate_html(
@@ -37,22 +38,8 @@ def generate_html(
     """
     # Read the CSV file and generate the HTML report
     # Return the HTML report as a pandas dataframe
-    missing_records = pd.read_csv(csv_file)
-
-    # Drop all rows that have NaN values in all columns except the first one
-    missing_records = missing_records.dropna(
-        subset=missing_records.columns[1:], how="all"
-    )
-
+    missing_records = parse_csv(csv_file)
     if not missing_records.empty:
-        missing_records = missing_records.set_index("Sites")
-        # Parse all columns except the first one as timedelta objects
-        missing_records = missing_records.astype("timedelta64[s]")
-
-        # Convert all timedelta objects to total hours
-        missing_records = missing_records.map(lambda x: x.total_seconds() / 3600)
-        missing_records.loc["TOTAL"] = missing_records.fillna(0).sum(axis=0)
-
         normfunc = colors.Normalize(vmin=0, vmax=bad_hours)
 
         def style_cell_colour(val):
@@ -116,6 +103,48 @@ def generate_html(
             output_file.write(html_report)
 
 
+def parse_csv(csv_file):
+
+    # Read the CSV file
+    missing_records = pd.read_csv(csv_file)
+
+    # Drop all rows that have NaN values in all columns except the first one
+    missing_records = missing_records.dropna(
+        subset=missing_records.columns[1:], how="all"
+    )
+
+    if not missing_records.empty:
+        missing_records = missing_records.set_index("Sites")
+        # Parse all columns except the first one as timedelta objects
+        missing_records = missing_records.astype("timedelta64[s]")
+
+        # Convert all timedelta objects to total hours
+        missing_records = missing_records.map(lambda x: x.total_seconds() / 3600)
+        missing_records.loc["TOTAL"] = missing_records.fillna(0).sum(axis=0)
+
+    return missing_records
+
+
+def record_sql(missing_file, totals_file, end_date):
+    missing_records = parse_csv(missing_file)
+    missing_dict = missing_records.loc["TOTAL"].to_dict()
+    missing_dict = {
+        k.replace(" ", "_"): v
+        for (k, v) in zip(missing_dict.keys(), missing_dict.values())
+    }
+    missing_dict["end_date"] = end_date
+    slm.insert_missing_totals(missing_dict, slm.connect_to_dev_db())
+
+    missing_records = parse_csv(totals_file)
+    totals_dict = missing_records.loc["TOTAL"].to_dict()
+    totals_dict = {
+        k.replace(" ", "_"): v
+        for (k, v) in zip(totals_dict.keys(), totals_dict.values())
+    }
+    totals_dict["end_date"] = end_date
+    slm.insert_recorded_totals(totals_dict, slm.connect_to_dev_db())
+
+
 def generate_title(location, start_date, end_date):
     title = ""
     title += f"<h1>Monthly missing data report for {location}</h1>"
@@ -154,19 +183,15 @@ def generate_highlights(csv_input: str, csv_totals: str):
 
         output += (
             f"<p>Total missing time: {missing_time.sum()} (out of {length_of_record.sum()})</p>"
-            f"Missing Percentage: {missing_time.sum() / length_of_record.sum() * 100.:.2f}%</p>"
+            f"Missing Percentage: "
+            f"{(missing_time.sum() / (length_of_record.sum()) if length_of_record.sum() > pd.Timedelta(days=0) else np.nan) * 100.:.2f}%</p>"
         )
-        output += (
-            f"<p>Site with most missing data: {missing_time.idxmax()}, with {missing_time[missing_time.idxmax()]} "
-            f"missing ({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
-        )
-        missing_time = missing_time.drop(missing_time.idxmax())
         if (not missing_time.empty) and length_of_record[
             missing_time.idxmax()
         ] > pd.Timedelta(0):
             output += (
-                f"<p>Site with second most missing data: {missing_time.idxmax()}, with "
-                f"{missing_time[missing_time.idxmax()]} missing "
+                f"<p>Site with most missing data: {missing_time.idxmax()}, with {missing_time[missing_time.idxmax()]} "
+                f"missing "
                 f"({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
             )
             missing_time = missing_time.drop(missing_time.idxmax())
@@ -174,10 +199,19 @@ def generate_highlights(csv_input: str, csv_totals: str):
                 missing_time.idxmax()
             ] > pd.Timedelta(0):
                 output += (
-                    f"<p>Site with third most missing data: {missing_time.idxmax()}, with "
+                    f"<p>Site with second most missing data: {missing_time.idxmax()}, with "
                     f"{missing_time[missing_time.idxmax()]} missing "
                     f"({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
                 )
+                missing_time = missing_time.drop(missing_time.idxmax())
+                if (not missing_time.empty) and length_of_record[
+                    missing_time.idxmax()
+                ] > pd.Timedelta(0):
+                    output += (
+                        f"<p>Site with third most missing data: {missing_time.idxmax()}, with "
+                        f"{missing_time[missing_time.idxmax()]} missing "
+                        f"({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
+                    )
 
     return output
 
