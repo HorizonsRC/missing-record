@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="Setting up monthly and weekly reports">
-      <change afterPath="$PROJECT_DIR$/sql_queries/insert_missing.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql_queries/insert_total.sql" afterDir="false" />
+    <list default="true" id="31095e8d-6a3c-437a-af16-d984e6218804" name="Changes" comment="separate parse_csv logic, various edge cases fixed, cleaned up how debug stuff works, added start/end date support, start of sql support">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/script_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/script_config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_files/weekly_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/weekly_config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/generate_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_html.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/generate_missing_data_csvs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/missing_record/site_list_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/site_list_merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_files/monthly_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config_files/monthly_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing_record/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/missing_record/send_email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monthly_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/monthly_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weekly_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/weekly_report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731618015838</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="separate parse_csv logic, various edge cases fixed, cleaned up how debug stuff works, added start/end date support, start of sql support">
+      <option name="closed" value="true" />
+      <created>1732073192484</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732073192484</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -258,7 +262,8 @@
     <MESSAGE value="requested changes" />
     <MESSAGE value="Removing backup&#10;&#10;Annex labels of total missing data and %&#10;&#10;Fix for missing data at start/end&#10;&#10;Main script copies to ares&#10;&#10;Points to tsdata envirodata server" />
     <MESSAGE value="Setting up monthly and weekly reports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting up monthly and weekly reports" />
+    <MESSAGE value="separate parse_csv logic, various edge cases fixed, cleaned up how debug stuff works, added start/end date support, start of sql support" />
+    <option name="LAST_COMMIT_MESSAGE" value="separate parse_csv logic, various edge cases fixed, cleaned up how debug stuff works, added start/end date support, start of sql support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

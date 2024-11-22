@@ -41,16 +41,12 @@ def send_email(recipient, subject, html_content):
     time.sleep(12)
 
 
-def send():
+def send(message=""):
     with open("config_files/recipients.yaml") as file:
         sending_list = yaml.safe_load(file)
 
     for recipient in sending_list:
-        html_content = (
-            "<p>Missing record report beta</p>"
-            "<p>This can be viewed with colours at:</p>"
-            r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting</p>"
-        )
+        html_content = message
         for suffix in sending_list[recipient]["file_suffix"]:
             with open(f"output_html/output{suffix}.html") as html_file:
                 html_content += html_file.read()

@@ -1,5 +1,5 @@
 import ruamel.yaml
-from datetime import datetime
+from datetime import datetime, date
 import dateutil.relativedelta
 import missing_record.generate_html
 import missing_record.generate_missing_data_csvs
@@ -11,8 +11,8 @@ config_file_path = "config_files/monthly_config.yaml"
 yaml = ruamel.yaml.YAML()
 with open(config_file_path) as fp:
     data = yaml.load(fp)
-finish_date = datetime.today()
-# finish_date = date(2024, 8, 1)
+# finish_date = datetime.today()
+finish_date = date(2024, 9, 1)
 data["start"] = (
     finish_date + dateutil.relativedelta.relativedelta(months=-1)
 ).strftime("%Y-%m-%d") + " 00:00"
@@ -27,7 +27,9 @@ missing_record.generate_html.generate(config_file_path)
 missing_record.generate_html.record_sql(
     "./output_csv/output.csv", "./output_csv/output_totals.csv", data["end"]
 )
-missing_record.send_email.send()
+# missing_record.send_email.send("<p>Monthly missing record report</p>"
+#     "<p>This can be viewed with colours at:</p>"
+#     r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports</p>")
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports"
     + f"\\{datetime.today().strftime('%Y-%m-%d')}"

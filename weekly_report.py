@@ -19,7 +19,11 @@ with open(config_file_path, "w") as fp:
 # Make and send reports
 missing_record.generate_missing_data_csvs.generate(config_file_path)
 missing_record.generate_html.generate(config_file_path)
-# missing_record.send_email.send()
+missing_record.send_email.send(
+    "<p>Weekly missing record report</p>"
+    "<p>This can be viewed with colours at:</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports</p>"
+)
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports"
     + f"\\{datetime.today().strftime('%Y-%m-%d')}"
