@@ -41,7 +41,7 @@ def send_email(recipient, subject, html_content):
     time.sleep(12)
 
 
-def send(message=""):
+def send(message="", title=""):
     with open("config_files/recipients.yaml") as file:
         sending_list = yaml.safe_load(file)
 
@@ -52,7 +52,9 @@ def send(message=""):
                 html_content += html_file.read()
         for address in os.getenv(recipient).split(","):
             print(address)
-            send_email(address, sending_list[recipient]["title"], html_content)
+            send_email(
+                address, sending_list[recipient]["title_prefix"] + title, html_content
+            )
     print("Email(s) sent successfully!")
 
 

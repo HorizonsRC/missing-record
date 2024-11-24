@@ -9,7 +9,8 @@ missing_record.generate_html.generate(config_file_path)
 missing_record.send_email.send(
     "<p>Manual missing record report</p>"
     "<p>This can be viewed with colours at:</p>"
-    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting</p>",
+    "manual missing record report",
 )
 missing_record.send_email.copy_files(
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting"

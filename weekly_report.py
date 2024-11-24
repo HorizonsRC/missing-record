@@ -22,7 +22,8 @@ missing_record.generate_html.generate(config_file_path)
 missing_record.send_email.send(
     "<p>Weekly missing record report</p>"
     "<p>This can be viewed with colours at:</p>"
-    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports</p>",
+    "weekly missing record report",
 )
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports"
