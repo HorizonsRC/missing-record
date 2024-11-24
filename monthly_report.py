@@ -26,12 +26,12 @@ missing_record.generate_html.generate(config_file_path)
 missing_record.generate_html.record_sql(
     "./output_csv/output.csv", "./output_csv/output_totals.csv", data["end"]
 )
-# missing_record.send_email.send(
-#     "<p>Monthly missing record report</p>"
-#     "<p>This can be viewed with colours at:</p>"
-#     r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports</p>",
-#     "monthly missing record report"
-# )
+missing_record.send_email.send(
+    "<p>Monthly missing record report</p>"
+    "<p>This can be viewed with colours at:</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports</p>",
+    "monthly missing record report",
+)
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports"
     + f"\\{datetime.today().strftime('%Y-%m-%d')}"
