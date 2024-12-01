@@ -23,14 +23,9 @@ with open(config_file_path, "w") as fp:
 # Make and send reports
 missing_record.generate_missing_data_csvs.generate(config_file_path)
 missing_record.generate_html.generate(config_file_path)
+
 missing_record.generate_html.record_sql(
     "./output_csv/output.csv", "./output_csv/output_totals.csv", data["end"]
-)
-missing_record.send_email.send(
-    "<p>Monthly missing record report</p>"
-    "<p>This can be viewed with colours at:</p>"
-    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports</p>",
-    "monthly missing record report",
 )
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports"
@@ -38,3 +33,10 @@ destination_folder = (
 )
 os.makedirs(destination_folder, exist_ok=True)
 missing_record.send_email.copy_files(destination_folder)
+
+missing_record.send_email.send(
+    "<p>Monthly missing record report</p>"
+    "<p>This can be viewed with colours at:</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\monthly_reports</p>",
+    "monthly missing record report",
+)

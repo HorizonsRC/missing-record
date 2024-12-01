@@ -20,15 +20,17 @@ with open(config_file_path, "w") as fp:
 # Make and send reports
 missing_record.generate_missing_data_csvs.generate(config_file_path)
 missing_record.generate_html.generate(config_file_path)
-missing_record.send_email.send(
-    "<p>Weekly missing record report</p>"
-    "<p>This can be viewed with colours at:</p>"
-    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports</p>",
-    "weekly missing record report",
-)
+
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports"
     + f"\\{finish_date.strftime('%Y-%m-%d')}"
 )
 os.makedirs(destination_folder, exist_ok=True)
 missing_record.send_email.copy_files(destination_folder)
+
+missing_record.send_email.send(
+    "<p>Weekly missing record report</p>"
+    "<p>This can be viewed with colours at:</p>"
+    r"<p>\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports</p>",
+    "weekly missing record report",
+)
