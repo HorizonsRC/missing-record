@@ -1,5 +1,5 @@
 import ruamel.yaml
-from datetime import datetime
+from datetime import datetime, timedelta
 import dateutil.relativedelta
 import missing_record.generate_html
 import missing_record.generate_missing_data_csvs
@@ -15,7 +15,7 @@ finish_date = datetime.today()
 data["start"] = (
     finish_date + dateutil.relativedelta.relativedelta(months=-1)
 ).strftime("%Y-%m-%d") + " 00:00"
-data["end"] = finish_date.strftime("%Y-%m-%d") + " 00:00"
+data["end"] = (finish_date - timedelta(days=1)).strftime("%Y-%m-%d") + " 23:59:59"
 
 with open(config_file_path, "w") as fp:
     yaml.dump(data, fp)

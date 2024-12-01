@@ -10,8 +10,9 @@ config_file_path = "config_files/weekly_config.yaml"
 yaml = ruamel.yaml.YAML()
 with open(config_file_path) as fp:
     data = yaml.load(fp)
-data["start"] = (datetime.today() - timedelta(days=7)).strftime("%Y-%m-%d") + " 00:00"
-data["end"] = datetime.today().strftime("%Y-%m-%d") + " 00:00"
+finish_date = datetime.today()
+data["start"] = (finish_date - timedelta(days=7)).strftime("%Y-%m-%d") + " 00:00:00"
+data["end"] = (finish_date - timedelta(days=1)).strftime("%Y-%m-%d") + " 23:59:59"
 
 with open(config_file_path, "w") as fp:
     yaml.dump(data, fp)
@@ -27,7 +28,7 @@ missing_record.send_email.send(
 )
 destination_folder = (
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting\weekly_reports"
-    + f"\\{datetime.today().strftime('%Y-%m-%d')}"
+    + f"\\{finish_date.strftime('%Y-%m-%d')}"
 )
 os.makedirs(destination_folder, exist_ok=True)
 missing_record.send_email.copy_files(destination_folder)

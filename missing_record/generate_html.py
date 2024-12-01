@@ -25,11 +25,12 @@ def generate_html(
     bad_hours : int, optional
         The number of hours that should be considered a very bad record.
         Default is 744 hours (31 days).
-        This is only a visual indicator and does not affect the data - it specifies the
-        number of hours that should be the most extreme colour on the colourmap.
+        This is only a visual indicator and does not affect the data - it
+        specifies the number of hours that should be the most extreme colour on
+        the colourmap.
     cmap : str, optional
-        The name of the matplotlib colourmap to use for the background colour of the
-        cells. Default is 'autumn_r'.
+        The name of the matplotlib colourmap to use for the background colour
+        of the cells. Default is 'autumn_r'.
 
     Returns
     ------
@@ -184,7 +185,9 @@ def generate_highlights(csv_input: str, csv_totals: str):
         output += (
             f"<p>Total missing time: {missing_time.sum()} (out of {length_of_record.sum()})</p>"
             f"Missing Percentage: "
-            f"{(missing_time.sum() / (length_of_record.sum()) if length_of_record.sum() > pd.Timedelta(days=0) else np.nan) * 100.:.2f}%</p>"
+            f"""{((missing_time.sum() / (length_of_record.sum())
+                   if length_of_record.sum() > pd.Timedelta(days=0)
+                   else np.nan) * 100.):.2f}%</p>"""
         )
         if (not missing_time.empty) and length_of_record[
             missing_time.idxmax()
@@ -201,7 +204,8 @@ def generate_highlights(csv_input: str, csv_totals: str):
                 output += (
                     f"<p>Site with second most missing data: {missing_time.idxmax()}, with "
                     f"{missing_time[missing_time.idxmax()]} missing "
-                    f"({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
+                    f"""({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()]
+                          * 100.:.2f}%).</p>"""
                 )
                 missing_time = missing_time.drop(missing_time.idxmax())
                 if (not missing_time.empty) and length_of_record[
@@ -210,7 +214,8 @@ def generate_highlights(csv_input: str, csv_totals: str):
                     output += (
                         f"<p>Site with third most missing data: {missing_time.idxmax()}, with "
                         f"{missing_time[missing_time.idxmax()]} missing "
-                        f"({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()] * 100.:.2f}%).</p>"
+                        f"""({missing_time[missing_time.idxmax()] / length_of_record[missing_time.idxmax()]
+                              * 100.:.2f}%).</p>"""
                     )
 
     return output

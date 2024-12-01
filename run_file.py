@@ -1,6 +1,7 @@
 import missing_record.generate_html
 import missing_record.generate_missing_data_csvs
 import missing_record.send_email
+from datetime import datetime
 
 config_file_path = "config_files/script_config.yaml"
 
@@ -14,4 +15,5 @@ missing_record.send_email.send(
 )
 missing_record.send_email.copy_files(
     r"\\ares\Hydrology\Hydrology Regions\Missing Record Reporting"
+    + f"\\ {datetime.today().strftime('%Y-%m-%d')}"
 )
