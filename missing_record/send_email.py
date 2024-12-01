@@ -37,8 +37,8 @@ def send_email(recipient, subject, html_content):
         smtp.starttls()
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.sendmail(EMAIL_ADDRESS, recipient, msg.as_string())
-    print(f"Sent to {recipient}, next email sending in 12 seconds...")
-    time.sleep(12)
+    print(f"Sent to {recipient}, next email sending in 30 seconds...")
+    time.sleep(30)
 
 
 def send(message="", title=""):
