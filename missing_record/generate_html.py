@@ -148,7 +148,7 @@ def record_sql(missing_file, totals_file, end_date):
 
 def generate_title(location, start_date, end_date):
     title = ""
-    title += f"<h1>Monthly missing data report for {location}</h1>"
+    title += f"<h1>Missing data report for {location}</h1>"
     title += f"<h3>From {start_date} to {end_date}</h3>"
     return title
 
