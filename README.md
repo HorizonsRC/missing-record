@@ -1,8 +1,6 @@
 # missing-record
 Missing record report generator and emailer.
 
-this is a test comment
-
 Only tested for python 3.11
 
 In order to run, the .env file needs to be present. It follows this format (recipients are email addresses, comma 
