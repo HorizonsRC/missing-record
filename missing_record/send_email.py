@@ -16,7 +16,13 @@ load_dotenv()
 # Get the email credentials
 EMAIL_SERVER = os.getenv("EMAIL_SERVER")
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+try:
+    path = os.getenv("EMAIL_SERVER_CONFIG_PATH")
+    with open(path) as file:
+        lines = [line.rstrip() for line in file]
+    EMAIL_PASSWORD = lines[1]
+except FileNotFoundError:
+    EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
 
 
