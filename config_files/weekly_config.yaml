@@ -1,6 +1,6 @@
 # Hilltop Server Configuration
-base_url: http://tsdata.horizons.govt.nz/
-hts: EnvironmentalData.hts
+base_url: "http://hilltopdev.horizons.govt.nz/"
+hts: "boo.hts"
 export_file: output_dump/missing.csv
 start: 2024-11-18 00:00
 end: 2024-11-24 23:59:59

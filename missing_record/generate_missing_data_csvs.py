@@ -417,4 +417,4 @@ def generate(config_file_path, debug=False):
 
 
 if __name__ == "__main__":
-    generate("config_files/script_config.yaml", debug=True)
+    generate("config_files/script_config.yaml", debug=False)

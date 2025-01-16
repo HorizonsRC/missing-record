@@ -1,9 +1,9 @@
 # Hilltop Server Configuration
-base_url: "http://tsdata.horizons.govt.nz/"
-hts: "EnvironmentalData.hts"
+base_url: "http://hilltopdev.horizons.govt.nz/"
+hts: "boo.hts"
 export_file: "output_dump/missing.csv"
-start: "2024-09-01 00:00"
-end: "2024-10-01 00:00"
+start: "2024-12-01 00:00"
+end: "2024-12-31 23:59"
 
 Annex_3_sites:
     - Lake Dudding
