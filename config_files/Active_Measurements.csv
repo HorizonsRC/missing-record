@@ -2,6 +2,8 @@ Stage [Water Level],Water Level
 
 Rainfall [SCADA Rainfall],Rainfall
 
+Rainfall (backup) [SCADA Rainfall (backup)],Rainfall Backup
+
 Atmospheric Pressure [Atmospheric Pressure],Atmospheric Pressure
 
 Air Temperature (1.5m) [Air Temperature (1.5m)],Air Temperature
@@ -105,13 +107,6 @@ Conductivity Low Range (T Comp) [Conductivity Low Range (T Comp)],Conductivity
 SP Conductivity (-500 mm) [SP Conductivity (-500 mm)],Conductivity
 Conductivity (-2000 mm) [Conductivity (-2000 mm)],Conductivity
 SP Conductivity (-2000 mm) [SP Conductivity (-2000 mm)],Conductivity
-
-Nitrate (ISE) [Nitrate (ISE)],Nitrates
-Nitrate (-500 mm) [Nitrate (-500 mm)],Nitrates
-Nitrate (UV) [Nitrate (UV)],Nitrates
-NO3-N Concentration [NO3-N Concentration],Nitrates
-Absorbance at 220nm [Absorbance at 220nm],Nitrates
-Absorbance at 270nm [Absorbance at 270nm],Nitrates
 
 ORP [ORP],ORP
 ORP (-500 mm) [ORP (-500 mm)],ORP
