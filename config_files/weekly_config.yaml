@@ -1,9 +1,9 @@
 # Hilltop Server Configuration
-base_url: "http://hilltopdev.horizons.govt.nz/"
-hts: "boo.hts"
+base_url: http://hilltopdev.horizons.govt.nz/
+hts: boo.hts
 export_file: output_dump/missing.csv
-start: 2024-11-18 00:00
-end: 2024-11-24 23:59:59
+start: '2025-07-07 00:00:00'
+end: '2025-07-13 23:59:59'
 
 Annex_3_sites:
 - Lake Dudding

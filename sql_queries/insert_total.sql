@@ -16,7 +16,6 @@ INSERT INTO Monthly_recorded_minutes(
 	,Blue_Green_Algae
 	,Chlorophyll
 	,Conductivity
-	,Nitrates
 	,ORP
 	,pH
 )
@@ -39,7 +38,6 @@ VALUES
 	,:Blue_Green_Algae
 	,:Chlorophyll
 	,:Conductivity
-	,:Nitrates
 	,:ORP
 	,:pH
 );
